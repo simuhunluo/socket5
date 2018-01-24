@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+        var socket = new WebSocket("ws:localhost:8080/websocket/chat")
+        var name = "web"
+        socket.onopen = function () {
+            socket.send("webinit" + "-" + name);
+        }
+        socket.onmessage = function (messageMeta) {
+            var message = messageMeta.data
+            document.getElementById("show").innerHTML +=  "<br>"+message
+        }
+    </script>
+</head>
+<body>
+<div id="show">初始的一句话</div>
+</body>
+</html>
